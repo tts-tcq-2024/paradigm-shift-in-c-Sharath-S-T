@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
 
-int checkValue(float value, float min, float max, const char *errorMessage)
+int checkStatus(float value, float min, float max, const char *errorMessage)
 {
     if (value < min || value > max)
     {
@@ -11,24 +11,13 @@ int checkValue(float value, float min, float max, const char *errorMessage)
     return 1;
 }
 
-int checkTemperature(float temperature)
-{
-    return checkValue(temperature, 0, 45, "Temperature out of range!");
-}
-
-int checkSoc(float soc)
-{
-    return checkValue(soc, 20, 80, "State of Charge out of range!");
-}
-
-int checkChargeRate(float chargeRate)
-{
-    return checkValue(chargeRate, 0, 0.8, "Charge Rate out of range");
-}
-
 int batteryIsOk(float temperature, float soc, float chargeRate)
 {
-    return checkTemperature(temperature) & checkSoc(soc) & checkChargeRate(chargeRate);
+    int temperatureStatus = checkStatus(temperature, 0, 45 ,"Temperature out of range!");
+    int socStatus = checkStatus(soc, 20, 80,"State of Charge out of range!");
+    int chargeRateStatus = checkStatus(chargeRate, 0, 0.8,"Charge Rate out of range!");
+
+    return (temperatureStatus & socStatus & chargeRateStatus);
 }
 
 int main()
