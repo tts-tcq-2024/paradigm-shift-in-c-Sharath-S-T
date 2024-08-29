@@ -3,12 +3,14 @@
 
 int checkStatus(float value, float min, float max, const char *errorMessage)
 {
-    if (value < min || value > max)
+   /* if (value < min || value > max)
     {
         printf("%s\n", errorMessage);
         return 0;
     }
-    return 1;
+    return 1; */
+    return ((value < min || value > max)?0:1);
+
 }
 
 int batteryIsOk(float temperature, float soc, float chargeRate)
