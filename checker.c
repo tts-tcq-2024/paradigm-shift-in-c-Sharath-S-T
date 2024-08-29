@@ -13,11 +13,12 @@ int checkStatus(float value, float min, float max, const char *errorMessage)
 
 int batteryIsOk(float temperature, float soc, float chargeRate)
 {
-    int temperatureStatus = checkStatus(temperature, 0, 45 ,"Temperature out of range!");
-    int socStatus = checkStatus(soc, 20, 80,"State of Charge out of range!");
-    int chargeRateStatus = checkStatus(chargeRate, 0, 0.8,"Charge Rate out of range!");
+    int status = 1;
+    status &= checkStatus(temperature, 0, 45 ,"Temperature out of range!");
+    status &= checkStatus(soc, 20, 80,"State of Charge out of range!");
+    status &= checkStatus(chargeRate, 0, 0.8,"Charge Rate out of range!");
 
-    return (temperatureStatus & socStatus & chargeRateStatus);
+    return status;
 }
 
 int main()
