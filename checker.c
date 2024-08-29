@@ -1,25 +1,11 @@
 #include <stdio.h>
 #include <assert.h>
 
-void printTemperatureOutOfRange()
-{
-    printf("Temperature out of range!\n");
-}
-
-void printSocOutOfRange()
-{
-    printf("State of Charge out of range!\n");
-}
-
-void printChargeRateOutOfRange() {
-    printf("Charge Rate out of range!\n");
-}
-
-int checkValue(float value, float min, float max, void (*printErrorMessage)())
+int checkValue(float value, float min, float max, const char *errorMessage)
 {
     if (value < min || value > max)
     {
-        printErrorMessage();
+        printf("%s\n", errorMessage);
         return 0;
     }
     return 1;
@@ -27,17 +13,17 @@ int checkValue(float value, float min, float max, void (*printErrorMessage)())
 
 int checkTemperature(float temperature)
 {
-    return checkValue(temperature, 0, 45, printTemperatureOutOfRange);
+    return checkValue(temperature, 0, 45, "Temperature out of range!");
 }
 
 int checkSoc(float soc)
 {
-    return checkValue(soc, 20, 80, printSocOutOfRange);
+    return checkValue(soc, 20, 80, "State of Charge out of range!");
 }
 
 int checkChargeRate(float chargeRate)
 {
-    return checkValue(chargeRate, 0, 0.8, printChargeRateOutOfRange);
+    return checkValue(chargeRate, 0, 0.8, "Charge Rate out of range");
 }
 
 int batteryIsOk(float temperature, float soc, float chargeRate)
