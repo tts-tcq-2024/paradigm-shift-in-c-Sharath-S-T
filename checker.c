@@ -18,44 +18,40 @@ void printChargeRateOutOfRange()
 
 int checkTemperature(float temperature)
 {
-    return (temperature < 0 || temperature > 45);
+    if(temperature < 0 || temperature > 45)
+    {
+        printTemperatureOutOfRange();
+        return 0;
+    }
+    return 1;
 }
 
 int checkSoc(float soc)
 {
-    return (soc < 20 || soc > 80);
+    if(soc < 20 || soc > 80)
+    {
+        printSocOutOfRange();
+        return 0;
+    }
+    return 1;
 }
 
 int checkChargeRate(float chargeRate)
 {
-  return (chargeRate > 0.8);
-}
-
-void setStatus(int* status) {
-    *status = 0;
+  if(chargeRate > 0.8)
+  {
+    printChargeRateOutOfRange();
+    return 0;
+  }
+  return 1;
 }
 
 int batteryIsOk(float temperature, float soc, float chargeRate) 
 {
     int status = 1;
-    if (checkTemperature(temperature))
-    {
-        printTemperatureOutOfRange();
-        setStatus(&status);
-    }
-    
-    if (checkSoc(soc))
-    {
-        printSocOutOfRange();
-        setStatus(&status);
-    }
-
-    if (checkChargeRate(chargeRate))
-    {
-        printChargeRateOutOfRange();
-        setStatus(&status);
-    }
-
+    status &= checkTemperature(temperature);
+    status &= checkSoc(soc);
+    status &= checkChargeRate(chargeRate);
     return status;
 }
 
