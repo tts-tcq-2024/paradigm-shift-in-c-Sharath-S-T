@@ -1,31 +1,28 @@
 #include <stdio.h>
 #include <assert.h>
 
-int checkStatus(float value, float min, float max, const char *errorMessage)
+// Simplified checkStatus function with reduced complexity
+int checkStatus(float value, float min, float max)
 {
-   /* if (value < min || value > max)
-    {
-        printf("%s\n", errorMessage);
-        return 0;
-    }
-    return 1; */
-    return ((value < min || value > max)?0:1);
-
+    return (value >= min && value <= max);
 }
 
+// Function to determine battery condition
 int batteryIsOk(float temperature, float soc, float chargeRate)
 {
-    int status = 1;
-    status &= checkStatus(temperature, 0, 45 ,"Temperature out of range!");
-    status &= checkStatus(soc, 20, 80,"State of Charge out of range!");
-    status &= checkStatus(chargeRate, 0, 0.8,"Charge Rate out of range!");
+    // Check conditions and use logical OR to combine the results
+    int tempOk = checkStatus(temperature, 0, 45);
+    int socOk = checkStatus(soc, 20, 80);
+    int chargeRateOk = checkStatus(chargeRate, 0, 0.8);
 
-    return status;
+    // Combine results using logical AND
+    return tempOk && socOk && chargeRateOk;
 }
 
 int main()
 {
-    assert(batteryIsOk(25, 70, 0.7));
-    assert(!batteryIsOk(50, 85, 0));
+    // Test cases
+    assert(batteryIsOk(25, 70, 0.7));     // Expected: true
+    assert(!batteryIsOk(50, 85, 0));      // Expected: false
     return 0;
 }
