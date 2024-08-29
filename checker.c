@@ -28,39 +28,28 @@ int checkSoc(float soc)
 
 int checkChargeRate(float chargeRate)
 {
-  return (chargeRate > 0.8);
+    return (chargeRate > 0.8);
 }
 
-void setStatus(int* status) {
-    *status = 0;
+void handleAllCheck(int condition, int* status, void (*printFunc)()) {
+    if (condition) {
+        printFunc();
+        *status = 0;
+    }
 }
 
-int batteryIsOk(float temperature, float soc, float chargeRate) 
-{
+int batteryIsOk(float temperature, float soc, float chargeRate) {
     int status = 1;
-    if (checkTemperature(temperature))
-    {
-        printTemperatureOutOfRange();
-        setStatus(&status);
-    }
-    
-    if (checkSoc(soc))
-    {
-        printSocOutOfRange();
-        setStatus(&status);
-    }
 
-    if (checkChargeRate(chargeRate))
-    {
-        printChargeRateOutOfRange();
-        setStatus(&status);
-    }
+    handleAllCheck(checkTemperature(temperature), &status, printTemperatureOutOfRange);
+    handleAllCheck(checkSoc(soc), &status, printSocOutOfRange);
+    handleAllCheck(checkChargeRate(chargeRate), &status, printChargeRateOutOfRange);
 
     return status;
 }
 
-int main() 
-{
-  //assert(batteryIsOk(25, 70, 0.7));
+int main() {
+    assert(batteryIsOk(25, 70, 0.7));
     assert(!batteryIsOk(50, 85, 0));
+    return 0;
 }
