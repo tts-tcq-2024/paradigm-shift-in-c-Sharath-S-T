@@ -1,28 +1,61 @@
-#include <stdio.h>
 #include <assert.h>
+#include <iostream>
+using namespace std;
 
-// Simplified checkStatus function with reduced complexity
-int checkStatus(float value, float min, float max)
+//---Range Checkers(purefunctions)---//
+uint8_t checkTemp(float temperature)
 {
-    return (value >= min && value <= max);
+    return (temperature < 0 || temperature > 45) ?0:1;
+}
+//purefunction
+uint8_t checkSoc(float soc)
+{
+    return (soc < 20 || soc > 80)?0:1;
+}
+//purefunction
+uint8_t checkChargeRate(float chargeRate)
+{
+    return (chargeRate > 0.8) ?0:1;
+}
+//------------------------------------//
+
+//---battery Health Checker(purefunction)---//
+uint8_t batteryState(bool temperatureOk, bool socOk, bool chargeRateOk) {
+  return temperatureOk&&socOk&&chargeRateOk;
 }
 
-// Function to determine battery condition
-int batteryIsOk(float temperature, float soc, float chargeRate)
-{
-    // Check conditions and use logical OR to combine the results
-    int tempOk = checkStatus(temperature, 0, 45);
-    int socOk = checkStatus(soc, 20, 80);
-    int chargeRateOk = checkStatus(chargeRate, 0, 0.8);
-
-    // Combine results using logical AND
-    return tempOk && socOk && chargeRateOk;
+// Helper function to print error messages
+void printErrorMessage(bool condition, const string& message) {
+    if (!condition) {
+        cout << message << "\n";
+    }
 }
 
-int main()
+// Function to print battery health
+void printBatteryHealth(float temperature, float soc, float chargeRate) {
+    printErrorMessage(checkTemp(temperature), "Temperature out of range!");
+    printErrorMessage(checkSoc(soc), "State of Charge out of range!");
+    printErrorMessage(checkChargeRate(chargeRate), "Charge Rate out of range!");
+}
+
+bool batteryIsOk(float temperature, float soc, float chargeRate)
 {
-    // Test cases
-    assert(batteryIsOk(25, 70, 0.7));     // Expected: true
-    assert(!batteryIsOk(50, 85, 0));      // Expected: false
-    return 0;
+    bool TempState    =   checkTemp(temperature);
+    bool SocState     =   checkSoc(soc);
+    bool ChargeState  =   checkChargeRate(chargeRate);
+    
+    //return battery health(true or false)
+    return batteryState(TempState, SocState, ChargeState);
+}
+
+int main() {
+  
+  printBatteryHealth(25, 70, 0.7);
+  printBatteryHealth(50, 85, 0) ;
+  
+  
+  assert(batteryIsOk(25, 70, 0.7)   == true);
+  assert(batteryIsOk(50, 85, 0)     == false);
+  
+  return 0;
 }
