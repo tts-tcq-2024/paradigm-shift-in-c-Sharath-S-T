@@ -1,11 +1,26 @@
 #include <stdio.h>
 #include <assert.h>
 
+void printTemperatureOutOfRange()
+{
+    printf("Temperature out of range!\n");
+}
+
+void printSocOutOfRange()
+{
+    printf("State of Charge out of range!\n");
+}
+
+void printChargeRateOutOfRange()
+{
+    printf("Charge Rate out of range!\n");
+}
+
 int checkTemperature(float temperature)
 {
   if(temperature < 0 || temperature > 45) 
   {
-    printf("Temperature out of range!\n");
+    printTemperatureOutOfRange();
     return 0;
   }
   return 1;
@@ -15,7 +30,7 @@ int checkSoc(float soc)
 {
   if(soc < 20 || soc > 80) 
   {
-    printf("State of Charge out of range!\n");
+    printSocOutOfRange();
     return 0;
   }
   return 1;
@@ -25,7 +40,7 @@ int checkChargeRate(float chargeRate)
 {
   if(chargeRate > 0.8) 
   {
-    printf("Charge Rate out of range!\n");
+    printChargeRateOutOfRange();
     return 0;
   }
   return 1;
