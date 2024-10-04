@@ -37,10 +37,7 @@ void checkChargeRate(float chargeRate, ParameterState *state) {
     
     checkBounds(chargeRate, 0, CHARGE_RATE_MAX, state->errorMessage);
     
-    if (chargeRate <= CHARGE_RATE_MAX && WARN_FOR_CHARGE_RATE) {
-        float warningHighThreshold = CHARGE_RATE_MAX - (TOLERANCE_PERCENTAGE * CHARGE_RATE_MAX);
-        if (chargeRate >= warningHighThreshold) {
-            printMessage(state->warningHigh);
-        }
+    if (WARN_FOR_CHARGE_RATE) {
+        handleWarningHigh(chargeRate, CHARGE_RATE_MAX, state);
     }
 }
