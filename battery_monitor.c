@@ -1,5 +1,6 @@
 // battery_monitor.c
 #include "battery_monitor.h"
+#include "parameter_validation.h"
 
 void printMessage(const char *message) {
     printf("%s\n", message);
