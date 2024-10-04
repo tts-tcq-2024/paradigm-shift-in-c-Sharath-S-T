@@ -29,4 +29,4 @@ void checkWarnings(float value, float min, float max, const ParameterState *stat
     if (isWarningHigh(value, max)) {
         printMessage(state->warningHigh);
     }
-}}
+}
