@@ -2,10 +2,6 @@
 #include <stdio.h>
 #include "parameter_validation.h"
 
-void printMessage(const char *message) {
-    printf("%s\n", message);
-}
-
 void checkBounds(float value, float min, float max, const char *errorMessage) {
     if (value < min || value > max) {
         printMessage(errorMessage);
