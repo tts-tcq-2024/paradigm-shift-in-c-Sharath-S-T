@@ -82,3 +82,15 @@ Example: If the SoC needs to be between 20 and 80, the warning-tolerance is 5% o
 Same for Temperature and Charge-rate.
 
 Keep in mind: Though we are starting with warning levels for all parameters, customers may give feedback to have warnings only for some parameters and not others. Minimize the change needed for such 'tuning'.
+
+
+## Changes for adding new Features :
+- Warning Level Control via Macros: Introduced macros to easily enable or disable warnings for specific parameters (temperature, SoC, charge rate) without modifying the core code.
+
+- Modular Design: Organized the code into separate header and source files, improving clarity and maintainability.
+
+- Validation Module: Created a dedicated module for checking if parameters are out of range and triggering warnings.
+
+- Parameter State Management: Developed a system to manage the state of each parameter, including error and warning messages.
+
+- Monitoring Coordination: Implemented a module that oversees the monitoring process, ensuring that parameters are validated and appropriate messages are displayed.
