@@ -94,3 +94,9 @@ Keep in mind: Though we are starting with warning levels for all parameters, cus
 - Parameter State Management: Developed a system to manage the state of each parameter, including error and warning messages.
 
 - Monitoring Coordination: Implemented a module that oversees the monitoring process, ensuring that parameters are validated and appropriate messages are displayed.
+
+##Adaptation / Feasiblity of previous code 
+   - Created multiple `.h` and `.c` files to improve modularity. and Ensured each function has a single responsibility
+   - Added new warning features by creating separate functions for handling warning and error messages.
+   - Adapted the previous code ito keep code modular and ensure low CCN.
+   - also added new functions for adding new features .
