@@ -59,3 +59,11 @@ Shorten the Semantic distance
 - Functional to express relation between input and output
 - Object oriented to encapsulate state with actions
 - Apect oriented to capture repeating aspects
+
+## Extending and Refactoring
+
+This exercise is about extending functionality. Work on the repository from your previous assignment to extend it (see extensions below). Often, code becomes more complex while extending it. The 'cleanliness' of the code goes down.
+
+The skill of refactoring keeps the code clean and fresh.
+
+This assignment is a continuation in the Paradigm Shift.
