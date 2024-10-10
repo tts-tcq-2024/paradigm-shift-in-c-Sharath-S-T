@@ -23,8 +23,8 @@ void checkTemperature(float temperature, ParameterState *state)
 void checkSoc(float soc, ParameterState *state) 
 {
     setParameterState(state, "State of Charge out of range!", 
-                     "Warning: Approaching discharge!", 
-                     "Warning: Approaching charge-peak!");
+                     "Warning: Approaching SOC discharge!", 
+                     "Warning: Approaching SOC charge-peak!");
     
     checkBounds(soc, SOC_MIN, SOC_MAX, state->errorMessage);
     
