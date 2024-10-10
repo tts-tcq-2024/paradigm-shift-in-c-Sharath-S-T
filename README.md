@@ -83,20 +83,8 @@ Same for Temperature and Charge-rate.
 
 Keep in mind: Though we are starting with warning levels for all parameters, customers may give feedback to have warnings only for some parameters and not others. Minimize the change needed for such 'tuning'.
 
-
-## Changes for adding new Features :
-- Warning Level Control via Macros: Introduced macros to easily enable or disable warnings for specific parameters (temperature, SoC, charge rate) without modifying the core code.
-
-- Modular Design: Organized the code into separate header and source files, improving clarity and maintainability.
-
-- Validation Module: Created a dedicated module for checking if parameters are out of range and triggering warnings.
-
-- Parameter State Management: Developed a system to manage the state of each parameter, including error and warning messages.
-
-- Monitoring Coordination: Implemented a module that oversees the monitoring process, ensuring that parameters are validated and appropriate messages are displayed.
-
-##Adaptation / Feasiblity of previous code 
-   - Created multiple `.h` and `.c` files to improve modularity. and Ensured each function has a single responsibility
+##Adaptation / Feasiblity of previous code :
+   - Created multiple `.h` and `.c` files to improve modularity. and Ensured each function has a single responsibility, as in previous code all were placed in single file.
    - Added new warning features by creating separate functions for handling warning and error messages.
-   - Adapted the previous code ito keep code modular and ensure low CCN.
+   - Adapted the previous code to keep code modular and ensure low CCN.
    - also added new functions for adding new features .
