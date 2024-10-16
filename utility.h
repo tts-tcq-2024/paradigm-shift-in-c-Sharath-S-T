@@ -21,7 +21,7 @@ void printErrorMessage(const char *warningMessage, float value);
 int handleLowerLimit(const BatteryParameter* config, float value);
 int handleUpperLimit(const BatteryParameter* config, float value);
 int handleOutOfRange(const BatteryParameter* config, float value);
-int outOfMaxThreshold(const BatteryParameter* config);
-int outOfMinThreshold(const BatteryParameter* config);
+int outOfMaxThreshold(const BatteryParameter* config, float value);
+int outOfMinThreshold(const BatteryParameter* config, float value);
 
 #endif // UTILITY_H
