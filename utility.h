@@ -17,7 +17,7 @@ extern const BatteryParameter TEMP_CONFIG;
 extern const BatteryParameter SOC_CONFIG;
 extern const BatteryParameter CHARGE_RATE_CONFIG;
 
-void printErrorMessage(float value, const char *warningMessage);
+void printErrorMessage(const char *warningMessage, float value);
 int handleLowerLimit(const BatteryParameter* config, float value);
 int handleUpperLimit(const BatteryParameter* config, float value);
 int handleOutOfRange(const BatteryParameter* config, float value);
