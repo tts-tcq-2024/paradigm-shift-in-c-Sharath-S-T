@@ -1,9 +1,11 @@
 #include "battery_monitor.h"
 #include "parameter_validation.h"
 
-void printMessage(const char *message)
+#include <stdio.h>
+
+void printMessage(const char *message, float value)
 {
-    printf("%s\n", message);
+    printf("%s, value = %.2f\n", message, value);
 }
 
 void checkTemperature(float temperature, ParameterState *state) 
