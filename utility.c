@@ -30,7 +30,7 @@ const BatteryParameter CHARGE_RATE_CONFIG = {
     .enableWarnings = CHARGE_RATE_WARNING ,
     .outOfRangeMessage = "Charge Rate out of range!",
     .warningUpperMessage = "Warning: Approaching charge rate limit! (upper_limit)",
-    .warningLowerMessage = "Warning: Charge rate is too low! (lower_limit)"
+    .warningLowerMessage = NULL
 };
 
 void printErrorMessage(const char *warningMessage, float value) {
