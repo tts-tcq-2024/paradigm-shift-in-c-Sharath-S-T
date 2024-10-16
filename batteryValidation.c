@@ -17,12 +17,8 @@ int checkStatus(float value, const BatteryParameter* config)
 }
 
 int batteryIsOk(float temperature, float soc, float chargeRate) {
-    int tempStatus = checkStatus(temperature, TEMP_MIN, TEMP_MAX, TEMP_WARNING_TOLERANCE, 
-                                 "Temperature out of range!", "Warning: Approaching temperature limit!");
-    int socStatus = checkStatus(soc, SOC_MIN, SOC_MAX, SOC_WARNING_TOLERANCE, 
-                                "State of Charge out of range!", "Warning: Approaching discharge/charge-peak!");
-    int chargeRateStatus = checkStatus(chargeRate, CHARGE_RATE_MIN, CHARGE_RATE_MAX, 
-                                        CHARGE_RATE_WARNING_TOLERANCE, "Charge Rate out of range!", 
-                                        "Warning: Approaching charge rate limit!");
+    int tempStatus = checkStatus(temperature, &TEMP_CONFIG);
+    int socStatus = checkStatus(soc, &SOC_CONFIG);
+    int chargeRateStatus = checkStatus(chargeRate, &CHARGE_RATE_CONFIG);
     return tempStatus && socStatus && chargeRateStatus;
 }
