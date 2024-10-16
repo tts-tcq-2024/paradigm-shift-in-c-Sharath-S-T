@@ -2,18 +2,6 @@
 #include "batteryValidation.h"
 #include "utility.h"
 
-#define TEMP_MIN 0
-#define TEMP_MAX 45
-#define SOC_MIN 20
-#define SOC_MAX 80
-#define CHARGE_RATE_MIN 0
-#define CHARGE_RATE_MAX 0.8
-
-// Warning tolerance (5% of upper limit)
-#define TEMP_WARNING_TOLERANCE (TEMP_MAX * 0.05)
-#define SOC_WARNING_TOLERANCE (SOC_MAX * 0.05)
-#define CHARGE_RATE_WARNING_TOLERANCE (CHARGE_RATE_MAX * 0.05);
-
 int checkRange(float value, float min, float max) {
     return value >= min && value <= max;
 }
