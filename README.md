@@ -83,7 +83,7 @@ Same for Temperature and Charge-rate.
 
 Keep in mind: Though we are starting with warning levels for all parameters, customers may give feedback to have warnings only for some parameters and not others. Minimize the change needed for such 'tuning'.
 
-#Adaptation / Feasiblity of previous code :
+## Adaptation / Feasiblity of previous code :
    - Created multiple `.h` and `.c` files to improve modularity. and Ensured each function has a single responsibility, as in previous code all were placed in single file.
    - Added new warning features by creating separate functions for handling warning and error messages.
    - Adapted the previous code to keep code modular and ensure low CCN.
