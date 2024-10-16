@@ -1,6 +1,8 @@
 #ifndef BATTERY_VALIDATION_H
 #define BATTERY_VALIDATION_H
 
+#include "utility.h"
+
 #define TEMP_MIN 0
 #define TEMP_MAX 45
 #define SOC_MIN 20
