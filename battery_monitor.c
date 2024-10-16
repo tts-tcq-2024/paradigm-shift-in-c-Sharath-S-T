@@ -3,11 +3,6 @@
 
 #include <stdio.h>
 
-void printMessage(const char *message, float value)
-{
-    printf("%s, value = %.2f\n", message, value);
-}
-
 void checkTemperature(float temperature, ParameterState *state) 
 {
     setParameterState(state, "Temperature out of range!", 
