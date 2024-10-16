@@ -5,10 +5,11 @@
 // Check status function
 int checkStatus(float value, const BatteryParameter* config)
 {
-    #if config->enableWarnings
+    if (config->enableWarnings)
+    {
         handleUpperLimit(config, value);
         handleLowerLimit(config, value); 
-    #endif
+    }
 
     if (handleOutOfRange(config, value)) {
         return 0; 
