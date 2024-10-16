@@ -1,26 +1,25 @@
-// main.c
-#include "parameter_state.h"
-#include "battery_monitor.h"
+#include <stdio.h>
+#include <assert.h>
 
-int main() {
-    ParameterState temperatureState;
-    ParameterState socState;
-    ParameterState chargeRateState;
+int checkStatus(float value, float min, float max, const char *errorMessage)
+{
+   if (value < min || value > max)
+-    {
+        printf("%s\n", errorMessage);
+        return 0;
+    }
+    return 1;
+}
 
-    // Test values for temperature, SoC, and charge rate
-    checkTemperature(46, &temperatureState); // Should print error
-    checkTemperature(39, &temperatureState); // Should print warning
-    checkTemperature(25, &temperatureState); // Should print nothing
-    checkTemperature(0, &temperatureState); // Should print warning
+int batteryIsOk(float temperature, float soc, float chargeRate)
+{
+    int temperatureStatus  = checkStatus(temperature, 0, 45 ,"Temperature out of range!");
+    int socStatus = checkStatus(soc, 20, 80,"State of Charge out of range!");
+    int chargeRateStatus = checkStatus(chargeRate, 0, 0.8,"Charge Rate out of range!");
+    return temperatureStatus && socStatus && chargeRateStatus;
+}
 
-    checkSoc(85, &socState); // Should print error
-    checkSoc(76, &socState); // Should print warning
-    checkSoc(50, &socState); // Should print nothing
-    checkSoc(20, &socState); // Should print warning
-
-    checkChargeRate(0.85, &chargeRateState); // Should print error
-    checkChargeRate(0.77, &chargeRateState); // Should print warning
-    checkChargeRate(0.70, &chargeRateState); // Should print nothing
-
-    return 0;
+int main(){
+    assert(batteryIsOk(25, 70, 0.7));
+    assert(!batteryIsOk(50, 85, 0));
 }
