@@ -2,12 +2,13 @@
 #define BATTERY_VALIDATION_H
 
 #include "utility.h"
+#include <limits.h>
 
 #define TEMP_MIN 0
 #define TEMP_MAX 45
 #define SOC_MIN 20
 #define SOC_MAX 80
-#define CHARGE_RATE_MIN 0
+#define CHARGE_RATE_MIN INT_MIN
 #define CHARGE_RATE_MAX 0.8
 
 #define WARNING_TOLERANCE_PERCENT 0.05
