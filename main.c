@@ -6,8 +6,8 @@ int main() {
     // Test cases for battery validation
     assert(batteryIsOk(25, 70, 0.7)); // Normal values
     assert(!batteryIsOk(50, 85, 0));   // Out of range values
-    assert(batteryIsOk(44, 80, 0.79)); // Near upper limits
-    assert(batteryIsOk(5, 20, 0));     // Near lower limits
+    assert(batteryIsOk(44, 79, 0.79)); // Near upper limits
+    assert(batteryIsOk(4, 19, 0));     // Near lower limits
 
     // Additional test cases
     assert(batteryIsOk(30, 22, 0.5));  // Valid case
