@@ -18,19 +18,19 @@ int isWarningHigh(float value, float max) {
 
 void checkBounds(float value, float min, float max, const char *errorMessage) {
     if (isOutOfRange(value, min, max)) {
-        printMessage(errorMessage);
+        printMessage(errorMessage,value);
     }
 }
 
 void handleWarningLow(float value, float min, float max, const ParameterState *state) {
     if (isWarningLow(value, min, max)) {
-        printMessage(state->warningLow);
+        printMessage(state->warningLow,value);
     }
 }
 
 void handleWarningHigh(float value, float max, const ParameterState *state) {
     if (isWarningHigh(value, max)) {
-        printMessage(state->warningHigh);
+        printMessage(state->warningHigh,value);
     }
 }
 
