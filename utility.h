@@ -18,5 +18,8 @@ extern const BatteryParameter SOC_CONFIG;
 extern const BatteryParameter CHARGE_RATE_CONFIG;
 
 void printWarning(float value, const char *warningMessage);
+int handleLowerLimit(const BatteryParameter* config, float value);
+int handleUpperLimit(const BatteryParameter* config, float value);
+int handleOutOfRange(const BatteryParameter* config, float value);
 
 #endif // UTILITY_H
