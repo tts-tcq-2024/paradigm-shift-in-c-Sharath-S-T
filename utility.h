@@ -23,5 +23,7 @@ int handleUpperLimit(const BatteryParameter* config, float value);
 int handleOutOfRange(const BatteryParameter* config, float value);
 int outOfMaxThreshold(const BatteryParameter* config, float value);
 int outOfMinThreshold(const BatteryParameter* config, float value);
+int checkLowerLimit(const BatteryParameter* config, float value);
+int checkUpperLimit(const BatteryParameter* config, float value);
 
 #endif // UTILITY_H
