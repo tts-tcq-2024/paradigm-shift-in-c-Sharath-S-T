@@ -4,7 +4,7 @@
 int checkStatus(float value, float min, float max, const char *errorMessage)
 {
    if (value < min || value > max)
--    {
+    {
         printf("%s\n", errorMessage);
         return 0;
     }
