@@ -2,6 +2,11 @@
 #include <stdio.h>
 #include "parameter_validation.h"
 
+void printMessage(const char *message, float value)
+{
+    printf("%s, value = %.2f\n", message, value);
+}
+
 int isOutOfRange(float value, float min, float max) {
     return value < min || value > max;
 }
