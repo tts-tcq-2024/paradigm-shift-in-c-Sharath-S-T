@@ -13,6 +13,11 @@
 #define SOC_WARNING_TOLERANCE (SOC_MAX * WARNING_TOLERANCE)
 #define CHARGE_RATE_WARNING_TOLERANCE (CHARGE_RATE_MAX * WARNING_TOLERANCE);
 
+// Enable/Disable warnings 
+#define TEMPERATURE_WARNING 1
+#define SOC_WARNING 1
+#define CHARGE_RATE_WARNING 1
+
 int batteryIsOk(float temperature, float soc, float chargeRate);
 
 #endif // BATTERY_VALIDATION_H
