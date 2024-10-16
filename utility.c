@@ -55,18 +55,18 @@ int handleUpperLimit(const BatteryParameter* config, float value) {
     return 0; 
 }
 
-int outOfMaxThreshold(const BatteryParameter* config)
+int outOfMaxThreshold(const BatteryParameter* config, float value)
 {
-    if (value >= config->max) {
+    if ((config->max !=INT_MAX) && (value >= config->max)) {
         printErrorMessage(config->outOfRangeMessage, value);
         return 1;
     }
     return 0;
 }
 
-int outOfMinThreshold(const BatteryParameter* config)
+int outOfMinThreshold(const BatteryParameter* config, float value)
 {
-    if (value <= config->min) {
+    if ((config_min != INT_MIN) && (value <= config->min)) {
         printErrorMessage(config->outOfRangeMessage, value);
         return 1;
     }
@@ -76,7 +76,7 @@ int outOfMinThreshold(const BatteryParameter* config)
 // Function to handle out-of-range checks
 int handleOutOfRange(const BatteryParameter* config, float value) {
     int status = 0
-    status |= outOfMaxThreshold(config);
-    status |= outOfMinThreshold(config);
+    status |= outOfMaxThreshold(config, value);
+    status |= outOfMinThreshold(config, value);
     return status;
 }
