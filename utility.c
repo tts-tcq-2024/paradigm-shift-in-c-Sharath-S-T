@@ -53,7 +53,7 @@ int handleUpperLimit(const BatteryParameter* config, float value)
 {
     if(config->warningUpperMessage  != NULL)
     {
-        checkLowerLimit(config,value);
+        checkUpperLimit(config,value);
         return 1;
     }
     return 0;  
