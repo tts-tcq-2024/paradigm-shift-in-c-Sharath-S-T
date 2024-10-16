@@ -5,7 +5,6 @@
 #include "config_parameters.h"
 #include "parameter_state.h"
 
-void printMessage(const char *message);
 void checkBounds(float value, float min, float max, const char *errorMessage);
 void checkWarnings(float value, float min, float max, const ParameterState *state);
 
