@@ -9,14 +9,14 @@
 #define CHARGE_RATE_MAX 0.8
 
 #define WARNING_TOLERANCE_PERCENT 0.05
-// #define TEMP_WARNING_TOLERANCE (TEMP_MAX * WARNING_TOLERANCE)
-// #define SOC_WARNING_TOLERANCE (SOC_MAX * WARNING_TOLERANCE)
-// #define CHARGE_RATE_WARNING_TOLERANCE (CHARGE_RATE_MAX * WARNING_TOLERANCE);
 
 // Enable/Disable warnings 
 #define TEMPERATURE_WARNING 1
 #define SOC_WARNING 1
 #define CHARGE_RATE_WARNING 1
+
+// Check status function
+int checkStatus(float value, const BatteryParameter* config);
 
 int batteryIsOk(float temperature, float soc, float chargeRate);
 
