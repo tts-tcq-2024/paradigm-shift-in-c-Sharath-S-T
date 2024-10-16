@@ -5,9 +5,6 @@
 #include "config_parameters.h"
 #include "parameter_state.h"
 
-// Function to print messages to the console
-void printMessage(const char *message, float value);
-
 // Function to check temperature and print appropriate messages
 void checkTemperature(float temperature, ParameterState *state);
 
