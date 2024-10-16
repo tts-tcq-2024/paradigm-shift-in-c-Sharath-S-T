@@ -33,7 +33,7 @@ const BatteryParameter CHARGE_RATE_CONFIG = {
     .warningLowerMessage = "Warning: Charge rate is too low!"
 };
 
-void printErrorMessage(float value, const char *warningMessage) {
+void printErrorMessage(const char *warningMessage, float value) {
     printf("%s (Value: %.2f)\n", warningMessage, value);
 }
 
