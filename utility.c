@@ -36,3 +36,30 @@ const BatteryParameter CHARGE_RATE_CONFIG = {
 void printWarning(float value, const char *warningMessage) {
     printf("%s (Value: %.2f)\n", warningMessage, value);
 }
+
+// Function to handle lower limit warnings
+int handleLowerLimit(const BatteryParameter* config, float value) {
+    if (value <= (config->min + config->warningTolerance) && value > config->min) {
+        printWarning(value, config->warningLowerMessage); 
+        return 1; 
+    }
+    return 0; 
+}
+
+// Function to handle upper limit warnings
+int handleUpperLimit(const BatteryParameter* config, float value) {
+    if (value >= (config->max - config->warningTolerance) && value < config->max) {
+        printWarning(value, config->warningUpperMessage); 
+        return 1; 
+    }
+    return 0; 
+}
+
+// Function to handle out-of-range checks
+int handleOutOfRange(const BatteryParameter* config, float value) {
+    if (value > config->max || value < config->min) {
+        printErrorMessage(config->outOfRangeMessage);
+        return 1;
+    }
+    return 0;
+}
