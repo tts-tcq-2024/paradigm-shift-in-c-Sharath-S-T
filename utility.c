@@ -40,7 +40,7 @@ void printErrorMessage(float value, const char *warningMessage) {
 // Function to handle lower limit warnings
 int handleLowerLimit(const BatteryParameter* config, float value) {
     if (value <= (config->min + config->warningTolerance) && value > config->min) {
-        printErrorMessage(value, config->warningLowerMessage); 
+        printErrorMessage(config->warningLowerMessage, value); 
         return 1; 
     }
     return 0; 
@@ -49,7 +49,7 @@ int handleLowerLimit(const BatteryParameter* config, float value) {
 // Function to handle upper limit warnings
 int handleUpperLimit(const BatteryParameter* config, float value) {
     if (value >= (config->max - config->warningTolerance) && value < config->max) {
-        printErrorMessage(value, config->warningUpperMessage); 
+        printErrorMessage(config->warningUpperMessage, value); 
         return 1; 
     }
     return 0; 
@@ -58,7 +58,7 @@ int handleUpperLimit(const BatteryParameter* config, float value) {
 // Function to handle out-of-range checks
 int handleOutOfRange(const BatteryParameter* config, float value) {
     if (value > config->max || value < config->min) {
-        printErrorMessage(config->outOfRangeMessage);
+        printErrorMessage(config->outOfRangeMessage, value);
         return 1;
     }
     return 0;
