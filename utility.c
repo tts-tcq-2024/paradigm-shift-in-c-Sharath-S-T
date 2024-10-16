@@ -19,8 +19,8 @@ const BatteryParameter SOC_CONFIG = {
     .warningTolerance = SOC_MAX * WARNING_TOLERANCE_PERCENT,
     .enableWarnings = SOC_WARNING ,
     .outOfRangeMessage = "State of Charge out of range!",
-    .warningUpperMessage = "Warning: Approaching charge-peak!",
-    .warningLowerMessage = "Warning: Approaching discharge!"
+    .warningUpperMessage = "Warning: Approaching charge-peak!(upper limit)",
+    .warningLowerMessage = "Warning: Approaching discharge! (lower limit)"
 };
 
 const BatteryParameter CHARGE_RATE_CONFIG = {
@@ -29,8 +29,8 @@ const BatteryParameter CHARGE_RATE_CONFIG = {
     .warningTolerance = CHARGE_RATE_MAX * WARNING_TOLERANCE_PERCENT,
     .enableWarnings = CHARGE_RATE_WARNING ,
     .outOfRangeMessage = "Charge Rate out of range!",
-    .warningUpperMessage = "Warning: Approaching charge rate limit!",
-    .warningLowerMessage = "Warning: Charge rate is too low!"
+    .warningUpperMessage = "Warning: Approaching charge rate limit! (upper_limit)",
+    .warningLowerMessage = "Warning: Charge rate is too low! (lower_limit)"
 };
 
 void printErrorMessage(const char *warningMessage, float value) {
