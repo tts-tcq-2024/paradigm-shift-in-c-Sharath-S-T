@@ -57,7 +57,7 @@ int handleUpperLimit(const BatteryParameter* config, float value) {
 
 // Function to handle out-of-range checks
 int handleOutOfRange(const BatteryParameter* config, float value) {
-    if (value > config->max || value < config->min) {
+    if (value >= config->max || value <= config->min) {
         printErrorMessage(config->outOfRangeMessage, value);
         return 1;
     }
