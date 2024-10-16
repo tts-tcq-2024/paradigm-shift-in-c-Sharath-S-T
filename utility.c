@@ -66,7 +66,7 @@ int outOfMaxThreshold(const BatteryParameter* config, float value)
 
 int outOfMinThreshold(const BatteryParameter* config, float value)
 {
-    if ((config_min != INT_MIN) && (value <= config->min)) {
+    if ((config->min != INT_MIN) && (value <= config->min)) {
         printErrorMessage(config->outOfRangeMessage, value);
         return 1;
     }
