@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "utility.h"
-#include "battery_validation.h"
+#include "batteryValidation.h"
 
 // Define and initialize configuration variables for all three parameters
 const BatteryParameter TEMP_CONFIG = {
