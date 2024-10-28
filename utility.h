@@ -12,6 +12,15 @@ typedef struct {
     const char* warningUpperMessage;
 } BatteryParameter;
 
+#define MAX_PARAMETERS 3
+
+typedef struct {
+    float value[MAX_PARAMETERS];              // Stores temperature, SOC, charge rate
+    const char* outOfRangeMessage[MAX_PARAMETERS]; // Out of range messages
+    const char* warningLowerMessage[MAX_PARAMETERS]; // Lower limit warning messages
+    const char* warningUpperMessage[MAX_PARAMETERS]; // Upper limit warning messages
+} BatteryStatus
+
 // Function declarations
 extern const BatteryParameter TEMP_CONFIG;
 extern const BatteryParameter SOC_CONFIG;
