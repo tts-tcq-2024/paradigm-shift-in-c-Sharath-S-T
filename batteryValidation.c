@@ -7,11 +7,11 @@ int checkStatus(float value, const BatteryParameter* config, BatteryParameterInd
 {
     if (config->enableWarnings)
     {
-        handleUpperLimit(config, value, index);
-        handleLowerLimit(config, value, index); 
+        handleUpperLimit(config, index, value);
+        handleLowerLimit(config, index, value); 
     }
 
-    if (handleOutOfRange(config, value, index)) {
+    if (handleOutOfRange(config, index, value)) {
         return 0; 
     }
     return 1;
