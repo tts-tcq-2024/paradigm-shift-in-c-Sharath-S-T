@@ -18,8 +18,8 @@ int checkStatus(float value, const BatteryParameter* config, BatteryParameterInd
 }
 
 int batteryIsOk(float temperature, float soc, float chargeRate, BatteryStatus* status) {
-    int tempStatus = checkStatus(temperature, &TEMP_CONFIG, PARAM_TEMP);
-    int socStatus = checkStatus(soc, &SOC_CONFIG, PARAM_SOC);
-    int chargeRateStatus = checkStatus(chargeRate, &CHARGE_RATE_CONFIG, PARAM_CHARGE_RATE);
+    int tempStatus = checkStatus(temperature, &TEMP_CONFIG, PARAM_TEMP, status);
+    int socStatus = checkStatus(soc, &SOC_CONFIG, PARAM_SOC, status);
+    int chargeRateStatus = checkStatus(chargeRate, &CHARGE_RATE_CONFIG, PARAM_CHARGE_RATE, status);
     return tempStatus && socStatus && chargeRateStatus;
 }
