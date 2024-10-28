@@ -19,8 +19,8 @@
 #define CHARGE_RATE_WARNING 1
 
 // Check status function
-int checkStatus(float value, const BatteryParameter* config, BatteryParameterIndex index);
+int checkStatus(float value, const BatteryParameter* config, BatteryParameterIndex index, BatteryStatus* status);
 
-int batteryIsOk(float temperature, float soc, float chargeRate);
+int batteryIsOk(float temperature, float soc, float chargeRate, BatteryStatus* status);
 
 #endif // BATTERY_VALIDATION_H
