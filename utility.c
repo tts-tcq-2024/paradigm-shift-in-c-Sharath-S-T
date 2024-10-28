@@ -81,10 +81,10 @@ int outOfMinThreshold(const BatteryParameter* config, BatteryStatus* status, Bat
 
 // Function to handle out-of-range checks
 int handleOutOfRange(const BatteryParameter* config, BatteryStatus* status, BatteryParameterIndex index, float value) {
-    int status = 0;
-    status |= outOfMaxThreshold(config, status, index, value);
-    status |= outOfMinThreshold(config, status, index, value);
-    return status;
+    int outOfRange = 0;
+    outOfRange |= outOfMaxThreshold(config, status, index, value);
+    outOfRange |= outOfMinThreshold(config, status, index, value);
+    return outOfRange;
 }
 
 int checkLowerLimit(const BatteryParameter* config, BatteryStatus* status, BatteryParameterIndex index, float value) {
