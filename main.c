@@ -12,21 +12,26 @@ void clearBatteryStatus(BatteryStatus* status) {
     }
 }
 
+// Function to print a single parameter's status
+void printParameterStatus(const BatteryStatus* status, int index) {
+    printf("Parameter %d:\n", index + 1);
+    printf("  Value: %.2f\n", status->value[index]);
+    
+    if (status->outOfRangeMessage[index] != NULL) {
+        printf("  Out of Range Message: %s\n", status->outOfRangeMessage[index]);
+    }
+    if (status->warningLowerMessage[index] != NULL) {
+        printf("  Lower Limit Warning Message: %s\n", status->warningLowerMessage[index]);
+    }
+    if (status->warningUpperMessage[index] != NULL) {
+        printf("  Upper Limit Warning Message: %s\n", status->warningUpperMessage[index]);
+    }
+}
+
 // Function to print BatteryStatus structure contents
 void printBatteryStatus(const BatteryStatus* status) {
     for (int i = 0; i < PARAM_COUNT; i++) {
-        printf("Parameter %d:\n", i + 1);
-        printf("  Value: %.2f\n", status->value[i]);
-        
-        if (status->outOfRangeMessage[i] != NULL) {
-            printf("  Out of Range Message: %s\n", status->outOfRangeMessage[i]);
-        }
-        if (status->warningLowerMessage[i] != NULL) {
-            printf("  Lower Limit Warning Message: %s\n", status->warningLowerMessage[i]);
-        }
-        if (status->warningUpperMessage[i] != NULL) {
-            printf("  Upper Limit Warning Message: %s\n", status->warningUpperMessage[i]);
-        }
+        printParameterStatus(status, i); // Call the helper function
     }
 }
 
