@@ -59,19 +59,21 @@ int handleUpperLimit(const BatteryParameter* config, float value)
     return 0;  
 }
 
-int outOfMaxThreshold(const BatteryParameter* config, float value)
+int outOfMaxThreshold(const BatteryParameter* config, BatteryStatus* status, BatteryParameterIndex index, float value)
 {
     if ((config->max !=INT_MAX) && (value >= config->max)) {
-        printErrorMessage(config->outOfRangeMessage, value);
+        status->value[index] = value;
+        status->outOfRangeMessage[index] = config->outOfRangeMessage;
         return 1;
     }
     return 0;
 }
 
-int outOfMinThreshold(const BatteryParameter* config, float value)
+int outOfMinThreshold(const BatteryParameter* config, BatteryStatus* status, BatteryParameterIndex index, float value)
 {
     if ((config->min != INT_MIN) && (value <= config->min)) {
-        printErrorMessage(config->outOfRangeMessage, value);
+        status->value[index] = value;
+        status->outOfRangeMessage[index] = config->outOfRangeMessage;
         return 1;
     }
     return 0;
@@ -85,17 +87,19 @@ int handleOutOfRange(const BatteryParameter* config, float value) {
     return status;
 }
 
-int checkLowerLimit(const BatteryParameter* config, float value) {
+int checkLowerLimit(const BatteryParameter* config, BatteryStatus* status, BatteryParameterIndex index, float value) {
     if (value <= (config->min + config->warningTolerance) && value > config->min) {
-        printErrorMessage(config->warningLowerMessage, value); 
+        status->value[index] = value;
+        status->warningLowerMessage[index] = config->warningLowerMessage; 
         return 1; 
     }
     return 0; 
 }
 
-int checkUpperLimit(const BatteryParameter* config, float value) {
+int checkUpperLimit(const BatteryParameter* config, BatteryStatus* status, BatteryParameterIndex index, float value) {
     if (value >= (config->max - config->warningTolerance) && value < config->max) {
-        printErrorMessage(config->warningUpperMessage, value); 
+        status->value[index] = value;
+        status->warningLowerMessage[index] = config->warningUpperMessage; 
         return 1; 
     }
     return 0; 
