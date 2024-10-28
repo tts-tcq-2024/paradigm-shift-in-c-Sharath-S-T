@@ -38,22 +38,22 @@ const BatteryParameter CHARGE_RATE_CONFIG = {
 // }
 
 // Function to handle lower limit warnings
-int handleLowerLimit(const BatteryParameter* config, BatteryParameterIndex index, float value)
+int handleLowerLimit(const BatteryParameter* config, BatteryStatus* status, BatteryParameterIndex index, float value)
 {
     if(config->warningLowerMessage != NULL)
     {
-        checkLowerLimit(config, index , value);
+        checkLowerLimit(config, status, index, value);
         return 1;
     }
     return 0; 
 }
 
 // Function to handle upper limit warnings
-int handleUpperLimit(const BatteryParameter* config, BatteryParameterIndex index, float value) 
+int handleUpperLimit(const BatteryParameter* config, BatteryStatus* status, BatteryParameterIndex index, float value) 
 {
     if(config->warningUpperMessage  != NULL)
     {
-        checkUpperLimit(config, index, value);
+        checkUpperLimit(config, status, index, value);
         return 1;
     }
     return 0;  
