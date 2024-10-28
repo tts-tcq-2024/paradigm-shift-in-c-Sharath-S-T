@@ -12,13 +12,6 @@ typedef struct {
     const char* warningUpperMessage;
 } BatteryParameter;
 
-typedef struct {
-    float value[PARAM_COUNT];              // Stores temperature, SOC, charge rate
-    const char* outOfRangeMessage[PARAM_COUNT]; // Out of range messages
-    const char* warningLowerMessage[PARAM_COUNT]; // Lower limit warning messages
-    const char* warningUpperMessage[PARAM_COUNT]; // Upper limit warning messages
-} BatteryStatus
-
 // Function declarations
 extern const BatteryParameter TEMP_CONFIG;
 extern const BatteryParameter SOC_CONFIG;
@@ -30,6 +23,13 @@ typedef enum {
     PARAM_CHARGE_RATE,
     PARAM_COUNT // This will give the count of parameters
 } BatteryParameterIndex;
+
+typedef struct {
+    float value[PARAM_COUNT];              // Stores temperature, SOC, charge rate
+    const char* outOfRangeMessage[PARAM_COUNT]; // Out of range messages
+    const char* warningLowerMessage[PARAM_COUNT]; // Lower limit warning messages
+    const char* warningUpperMessage[PARAM_COUNT]; // Upper limit warning messages
+} BatteryStatus;
 
 // void printErrorMessage(const char *warningMessage, float value);
 int handleLowerLimit(const BatteryParameter* config, BatteryParameterIndex index, float value);
