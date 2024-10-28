@@ -31,13 +31,13 @@ typedef enum {
     PARAM_COUNT // This will give the count of parameters
 } BatteryParameterIndex;
 
-void printErrorMessage(const char *warningMessage, float value);
-int handleLowerLimit(const BatteryParameter* config, float value);
-int handleUpperLimit(const BatteryParameter* config, float value);
-int handleOutOfRange(const BatteryParameter* config, float value);
-int outOfMaxThreshold(const BatteryParameter* config, float value);
-int outOfMinThreshold(const BatteryParameter* config, float value);
-int checkLowerLimit(const BatteryParameter* config, float value);
-int checkUpperLimit(const BatteryParameter* config, float value);
+// void printErrorMessage(const char *warningMessage, float value);
+int handleLowerLimit(const BatteryParameter* config, BatteryParameterIndex index, float value);
+int handleUpperLimit(const BatteryParameter* config, BatteryParameterIndex index, float value);
+int handleOutOfRange(const BatteryParameter* config, BatteryParameterIndex index, float value);
+int outOfMaxThreshold(const BatteryParameter* config, BatteryStatus* status, BatteryParameterIndex index, float value);
+int outOfMinThreshold(const BatteryParameter* config, BatteryStatus* status, BatteryParameterIndex index, float value);
+int checkLowerLimit(const BatteryParameter* config, BatteryStatus* status, BatteryParameterIndex index, float value);
+int checkUpperLimit(const BatteryParameter* config, BatteryStatus* status, BatteryParameterIndex index, float value);
 
 #endif // UTILITY_H
