@@ -33,27 +33,27 @@ const BatteryParameter CHARGE_RATE_CONFIG = {
     .warningLowerMessage = NULL
 };
 
-void printErrorMessage(const char *warningMessage, float value) {
-    printf("%s (Value: %.2f)\n", warningMessage, value);
-}
+// void printErrorMessage(const char *warningMessage, float value) {
+//     printf("%s (Value: %.2f)\n", warningMessage, value);
+// }
 
 // Function to handle lower limit warnings
-int handleLowerLimit(const BatteryParameter* config, float value)
+int handleLowerLimit(const BatteryParameter* config, BatteryParameterIndex index, float value)
 {
     if(config->warningLowerMessage != NULL)
     {
-        checkLowerLimit(config,value);
+        checkLowerLimit(config, index , value);
         return 1;
     }
     return 0; 
 }
 
 // Function to handle upper limit warnings
-int handleUpperLimit(const BatteryParameter* config, float value) 
+int handleUpperLimit(const BatteryParameter* config, BatteryParameterIndex index, float value) 
 {
     if(config->warningUpperMessage  != NULL)
     {
-        checkUpperLimit(config,value);
+        checkUpperLimit(config, index, value);
         return 1;
     }
     return 0;  
@@ -80,10 +80,10 @@ int outOfMinThreshold(const BatteryParameter* config, BatteryStatus* status, Bat
 }
 
 // Function to handle out-of-range checks
-int handleOutOfRange(const BatteryParameter* config, float value) {
+int handleOutOfRange(const BatteryParameter* config, BatteryParameterIndex index, float value) {
     int status = 0;
-    status |= outOfMaxThreshold(config, value);
-    status |= outOfMinThreshold(config, value);
+    status |= outOfMaxThreshold(config, index, value);
+    status |= outOfMinThreshold(config, index, value);
     return status;
 }
 
