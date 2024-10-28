@@ -18,16 +18,24 @@ void printParameterValue(float value, int index) {
     printf("  Value: %.2f\n", value);
 }
 
-// Function to print messages for a parameter
-void printMessages(const char* message, const char* lowerWarning, const char* upperWarning) {
+// Function to print the out of range message
+void printOutOfRangeMessage(const char* message) {
     if (message != NULL) {
         printf("  Out of Range Message: %s\n", message);
     }
-    if (lowerWarning != NULL) {
-        printf("  Lower Limit Warning Message: %s\n", lowerWarning);
+}
+
+// Function to print the lower limit warning message
+void printLowerLimitWarning(const char* message) {
+    if (message != NULL) {
+        printf("  Lower Limit Warning Message: %s\n", message);
     }
-    if (upperWarning != NULL) {
-        printf("  Upper Limit Warning Message: %s\n", upperWarning);
+}
+
+// Function to print the upper limit warning message
+void printUpperLimitWarning(const char* message) {
+    if (message != NULL) {
+        printf("  Upper Limit Warning Message: %s\n", message);
     }
 }
 
@@ -35,7 +43,9 @@ void printMessages(const char* message, const char* lowerWarning, const char* up
 void printBatteryStatus(const BatteryStatus* status) {
     for (int i = 0; i < PARAM_COUNT; i++) {
         printParameterValue(status->value[i], i);
-        printMessages(status->outOfRangeMessage[i], status->warningLowerMessage[i], status->warningUpperMessage[i]);
+        printOutOfRangeMessage(status->outOfRangeMessage[i]);
+        printLowerLimitWarning(status->warningLowerMessage[i]);
+        printUpperLimitWarning(status->warningUpperMessage[i]);
     }
 }
 
