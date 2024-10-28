@@ -32,8 +32,8 @@ typedef struct {
 } BatteryStatus;
 
 // void printErrorMessage(const char *warningMessage, float value);
-int handleLowerLimit(const BatteryParameter* config, BatteryParameterIndex index, float value);
-int handleUpperLimit(const BatteryParameter* config, BatteryParameterIndex index, float value);
+int handleLowerLimit(const BatteryParameter* config, BatteryStatus* status, BatteryParameterIndex index, float value)
+int handleUpperLimit(const BatteryParameter* config, BatteryStatus* status, BatteryParameterIndex index, float value);
 int handleOutOfRange(const BatteryParameter* config, BatteryParameterIndex index, float value);
 int outOfMaxThreshold(const BatteryParameter* config, BatteryStatus* status, BatteryParameterIndex index, float value);
 int outOfMinThreshold(const BatteryParameter* config, BatteryStatus* status, BatteryParameterIndex index, float value);
